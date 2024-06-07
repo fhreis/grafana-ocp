@@ -1,0 +1,29 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: grafana-build
+spec:
+  source:
+    type: Dockerfile
+    dockerfile: |
+      FROM grafana/grafana:7.0.0-beta1
+      # Add any additional customizations or configurations here
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: grafana/grafana:7.0.0-beta1
+        namespace: openshift
+  output:
+    to:
+      kind: ImageStreamTag
+      name: grafana:latest
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChange:
+        from:
+          kind: ImageStreamTag
+          name: grafana:7.0.0-beta1
+          namespace: openshift
