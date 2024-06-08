@@ -3,6 +3,8 @@ oc create -f grafana-build.yaml
 
 oc apply -f grafana-deployment.yaml
 
+oc apply -f your-deployment-config.yaml
+
 
 oc set volumes deployment/example-application \
 >   --add --name example-pv-storage --type pvc --claim-class nfs-storage \
