@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: build-config-grafana
+spec:
+  source:
+    type: Binary
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: quay.io/miami_freis/grafana-img-1.0
+  output:
+    to:
+      kind: ImageStreamTag
+      name: your-project-name:latest

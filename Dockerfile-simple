@@ -1,0 +1,13 @@
+# Use the official Grafana base image
+FROM grafana/grafana:latest
+
+# Set the Grafana version
+ARG GRAFANA_VERSION=latest
+
+# Install any additional dependencies or plugins here (if needed)
+
+# Expose the Grafana port
+EXPOSE 3000
+
+# Start Grafana
+CMD ["grafana-server", "--config=/etc/grafana/grafana.ini", "--homepath=/usr/share/grafana", "--packaging=docker"]

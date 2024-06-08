@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-grafana-delfos-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana-delfos-1
+  template:
+    metadata:
+      labels:
+        app: grafana-delfos-1
+    spec:
+      containers:
+      - name: grafana-delfos-1
+        image: quay.io/miami_freis/grafana-img-1.0:latest
+        ports:
+        - containerPort: 3000  # Change the port number if your application listens on a different port
